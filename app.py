@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, classification_report
 from sklearn.datasets import load_iris
 import joblib
@@ -25,8 +26,8 @@ scaler = StandardScaler()
 X_train = scaler.fit_transform(X_train)
 X_test = scaler.transform(X_test)
 
-# Train a Random Forest Classifier
-model = RandomForestClassifier(n_estimators=100, random_state=42)
+# Train a LogisticRegression
+model = LogisticRegression( random_state=42)
 model.fit(X_train, y_train)
 
 # Make predictions
@@ -38,12 +39,6 @@ print(f"Model Accuracy: {accuracy:.2f}")
 print("\nClassification Report:\n", classification_report(y_test, y_pred))
 
 # Save the trained model
-joblib.dump(model, "iris_model.pkl")
-print("Model saved as 'iris_model.pkl'")
+joblib.dump(model, "iris_model_logistic.pkl")
+print("Model saved as 'iris_model_logisitic.pkl'")
 
-# Plot feature importance
-plt.barh(data.feature_names, model.feature_importances_)
-plt.xlabel("Feature Importance")
-plt.ylabel("Features")
-plt.title("Feature Importance in Iris Classification")
-plt.show()
