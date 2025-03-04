@@ -19,7 +19,9 @@ X = df.drop(columns=['Target'])
 y = df['Target']
 
 # Split data into training and test sets
+
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=30)
+
 
 # Scale the data (optional, improves performance for some models)
 scaler = StandardScaler()
